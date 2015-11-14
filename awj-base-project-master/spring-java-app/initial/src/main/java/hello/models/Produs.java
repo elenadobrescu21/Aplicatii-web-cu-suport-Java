@@ -3,19 +3,20 @@ package hello;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Persoana {
-  private String name;
+public class Produs {
+  
   private int id;
+  private String name;
 
-  public Persoana() {}
+  public Produs() {}
 
-  public Persoana(int id, String name) {
-      this.name = name;
-      this.id = id;
+  public Produs(int id, String name) {
+    this.name = name;
+    this.id = id;
   }
 
   public String getName() {
-      return this.name;
+     return this.name;
   }
 
   public int getId() {
@@ -23,6 +24,6 @@ public class Persoana {
   }
   
   public void setName(String name) {
-		this.name = name;
+	this.name = name;
   }
 }
