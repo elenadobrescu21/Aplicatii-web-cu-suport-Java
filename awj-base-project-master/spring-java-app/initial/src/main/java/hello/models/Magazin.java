@@ -14,7 +14,7 @@ public class Magazin{
   public Magazin(int id, String name, String address) {
       this.name = name;
       this.id = id;
-	  this.address = address;
+      this.address = address;
   }
 
   public String getName() {
@@ -26,7 +26,7 @@ public class Magazin{
   }
   
   public String getAddress() {
-	 return this.address;
+     return this.address;
   }
   
   public void setName(String name) {
