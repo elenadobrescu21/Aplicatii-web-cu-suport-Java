@@ -25,14 +25,14 @@ public class Persoana {
   }
 
   public String getName() {
-      return this.name;
+  	return this.name;
   }
 
   public int getId() {
-    return this.id;
+  	return this.id;
   }
   
   public void setName(String name) {
-		this.name = name;
+	this.name = name;
   }
 }
