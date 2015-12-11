@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app="blog">
 <head>
@@ -6,11 +7,615 @@
   <link rel="stylesheet" media="all" href="css/custom.css">
 </head>
 <body>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">AWJ Base Project</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Magazin</a></li>
+            <li><a href="#">Persoana</a></li>
+			<li><a href="#">Produs </a> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <hr/>
 
   <div class="container">
     <div ng-controller="HomeController">
       <h1>{{ helloWorld }}</h1>
+      <p>Writing this live into the browser...</p>
     </div>
+  </div>
+
+  <hr/>
+
+  <!-- /resources1 -->
+  <div class="container">
+    <h1 class="resource-title">Magazin</h1>
+
+    <table class="table table-bordered table-hover">
+      <tr class="info">
+        <th>Id</th>
+        <th>Nume</th>
+        <th>Adresa</th>
+   
+        <th style="width:210px;">Options</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Altex</td>
+        <td>Piata Muncii, Nr 4</td>
+       
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Afi</td>
+        <td>Bulevardul Vasile Milea</td>
+    
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Megamall Pantelimon</td>
+        <td>Soseaua Pantelimon, nr 23</td>
+       
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Cora</td>
+        <td>Lujerului</td>
+   
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Edit magazin</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="id_magazin" placeholder="Id">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" id="nume_magazin" placeholder="Nume">
+          </div>
+          <div class="form-group">
+            <label for="attribute3">Adresa</label>
+            <input type="text" class="form-control" id="adresa_magazin" placeholder="Adresa">
+          </div>
+        
+          <button type="submit" class="btn btn-info">Save</button>
+        </form>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Add magazin</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Id">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume">
+          </div>
+          <div class="form-group">
+            <label for="attribute3">Adresa</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Adresa">
+          </div>
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Show magazin</h2>
+      </div>
+      <div class="col-md-2">
+        <img src="http://lorempixel.com/200/200/technics/?id=1" class="img-thumbnail"/>
+      </div>
+      <div class="col-md-10">
+        <h3>ID:</h3>
+		<h3>Nume:</h3>
+		<h3>Adresa: </h3>
+        
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <!-- /resources2-->
+  <div class="container">
+    <h1 class="resource-title">Persoana</h1>
+ 
+    <table class="table table-bordered table-hover">
+      <tr class="info">
+        <th rowspan="2">Id</th>
+        <th rowspan="2">Nume</th>
+		<th colspan="3">Adresa </th>
+        <th rowspan ="2"style="width:210px;">Options</th>
+      </tr>
+	    <tr class="warning">
+			
+            <th> Oras</th>
+            <th> Strada </th>
+			<th> Numar </th>
+        </tr>
+	  
+	  <tr>
+	 
+	  
+	  </td>
+      <tr>
+        <td>1</td>
+        <td>Dobrescu Elena</td>
+		<td> Bucuresti </td>
+		<td> Fraului</td>
+		<td> Nr 18 </td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Udrea Marius</td>
+		<td> Bucuresti</td>
+		<td> Pacii </td>
+		<td> Nr 15 </td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Bolboaca Valeria</td>
+		<td> Ploiesti </td>
+		<td> Brazi </td>
+		<td> Nr 23 </td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Simion Andrada</td>
+		<td> Bucuresti</td>
+		<td> Soseaua Fundeni </td>
+		<td> Nr 19</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Edit persoana </h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Id">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume">
+          </div>
+		    <div class="form-group">
+            <label for="attribute2">Oras</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Oras">
+          </div>
+		    <div class="form-group">
+            <label for="attribute2">Strada</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Strada">
+          </div>
+		    <div class="form-group">
+            <label for="attribute2">Numar</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Numar">
+          </div>
+          <button type="submit" class="btn btn-info">Save</button>
+        </form>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Add persoana</h2>
+       <div class="form-group">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Id">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume">
+          </div>
+		    <div class="form-group">
+            <label for="attribute2">Oras</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Oras">
+          </div>
+		    <div class="form-group">
+            <label for="attribute2">Strada</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Strada">
+          </div>
+		    <div class="form-group">
+            <label for="attribute2">Numar</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Numar">
+          </div>
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Show persoana</h2>
+      </div>
+      <div class="col-md-2">
+        <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
+      </div>
+      <div class="col-md-10">
+        <h3>Id</h3>
+       <h3> Nume <h3>
+        <h3>Adresa</h3>
+        <table class="table table-bordered table-striped table-hover">
+          <tr>
+            <th>Oras</th>
+			<th> Strada </th>
+            <th>Numar</th>
+          </tr>
+          <tr>
+            <td>Lorem ipsum</td>
+			<td>lorem </td>
+            <td>Lorem</td>
+          </tr>
+          <tr>
+            <td>Lorem ipsum dolor</td>
+			<td> lorem </td>
+            <td>Sir</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+  <!-- resursa 3 !-->
+    <div class="container">
+    <h1 class="resource-title">Produs</h1>
+
+    <table class="table table-bordered table-hover">
+      <tr class="info">
+        <th>Id</th>
+        <th>Nume</th>
+        
+   
+        <th style="width:210px;">Options</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Laptop</td>
+      
+       
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Frigider</td>
+       
+    
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Televizor</td>
+      
+       
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Cuptor cu microunde</td>
+       
+   
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Edit produs</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="id_magazin" placeholder="Id">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" id="nume_magazin" placeholder="Nume">
+          </div>
+        
+        
+          <button type="submit" class="btn btn-info">Save</button>
+        </form>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Add produs</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Id">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume">
+          </div>
+        
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Show produs</h2>
+      </div>
+      <div class="col-md-2">
+        <img src="http://lorempixel.com/200/200/technics/?id=1" class="img-thumbnail"/>
+      </div>
+      <div class="col-md-10">
+        <h3>ID:</h3>
+		<h3>Nume:</h3>
+        
+      </div>
+    </div>
+  </div>
+  <hr/>
+
+  <div class="container">
+    <footer class="footer">
+      <p class="text-muted pull-left">AWJ Base Project &copy; 2015-2016</p>
+      <p class="text-muted pull-right">Dobrescu Elena, 332AA</p>
+    </footer>
   </div>
 
   <script src="js/jquery-1.11.3.min.js"></script>

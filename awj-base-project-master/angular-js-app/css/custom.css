@@ -19,3 +19,11 @@ body {
   border-color:#78fa89;
 }
 
+table th{
+	text-align:center;
+}
+.resource-title{
+	text-align:center;
+	margin-bottom:30px;
+}
+
