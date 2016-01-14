@@ -1,4 +1,5 @@
-package hello.models;
+package hello;
+
 
 public class Adresa {
 	

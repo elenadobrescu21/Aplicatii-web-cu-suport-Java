@@ -41,14 +41,14 @@ public class MagazinController {
   }
 
   @RequestMapping(value="/magazin/{id}", method = RequestMethod.DELETE)
-  public ResponseEntity remove(@PathVariable("id") int id) {
+  public void remove(@PathVariable("id") int id) {
     for(Magazin m : this.magazine) {
       if(m.getId() == id) {
         this.magazine.remove(m);
-        return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NO_CONTENT);
+        //return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NO_CONTENT);
       }
     }
-    return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
+   // return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }
   
   @RequestMapping(value="/magazin", method = RequestMethod.POST)

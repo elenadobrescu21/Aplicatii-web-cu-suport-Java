@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html ng-app="blog">
 <head>
-  <title>My application</title>
+  <title>Elena's application</title>
   <link rel="stylesheet" media="all" href="css/bootstrap.min.css">
   <link rel="stylesheet" media="all" href="css/custom.css">
 </head>
@@ -36,14 +36,14 @@
   <div class="container">
     <div ng-controller="HomeController">
       <h1>{{ helloWorld }}</h1>
-      <p>Writing this live into the browser...</p>
+     
     </div>
   </div>
 
   <hr/>
 
   <!-- /resources1 -->
-  <div class="container">
+  <div class="container" ng-controller="HomeController">
     <h1 class="resource-title">Magazin</h1>
 
     <table class="table table-bordered table-hover">
@@ -54,11 +54,10 @@
    
         <th style="width:210px;">Options</th>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Altex</td>
-        <td>Piata Muncii, Nr 4</td>
-       
+	    <tr ng-repeat="item in magazine.data" data-id="{{ item.id }}">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+		<td> {{item.address}} </td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -66,108 +65,26 @@
               <span class="glyphicon glyphicon-folder-open"></span>
             </span>
           </a>
-          <a href="">
-            <span class="label label-primary">
+          <button ng-click="setUpdatePerson(item)" class="btn btn-info btn-xs">
               Edit
               <span class="glyphicon glyphicon-edit"></span>
-            </span>
           </a>
-          <a href="">
-            <span class="label label-danger">
+          <button ng-click="deleteMagazin(item.id)" class="btn btn-danger btn-xs">
               Remove
               <span class="glyphicon glyphicon-remove"></span>
-            </span>
+            </button>
           </a>
         </td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Afi</td>
-        <td>Bulevardul Vasile Milea</td>
+      
     
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Megamall Pantelimon</td>
-        <td>Soseaua Pantelimon, nr 23</td>
-       
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Cora</td>
-        <td>Lujerului</td>
-   
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
     </table>
 
     <div class="row">
       <div class="col-md-3">
         <h2>Edit magazin</h2>
         <form action="" method="">
-          <div class="form-group">
-            <label for="attribute1">Id</label>
-            <input type="text" class="form-control" id="id_magazin" placeholder="Id">
-          </div>
+          
           <div class="form-group">
             <label for="attribute2">Nume</label>
             <input type="text" class="form-control" id="nume_magazin" placeholder="Nume">
@@ -185,19 +102,16 @@
       <div class="col-md-3 col-md-offset-6">
         <h2>Add magazin</h2>
         <form action="" method="">
-          <div class="form-group">
-            <label for="attribute1">Id</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Id">
-          </div>
+        
           <div class="form-group">
             <label for="attribute2">Nume</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Nume">
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume" ng-model="magazin.name">
           </div>
           <div class="form-group">
             <label for="attribute3">Adresa</label>
-            <input type="text" class="form-control" id="attribute3" placeholder="Adresa">
+            <input type="text" class="form-control" id="attribute3" placeholder="Adresa" ng-model="magazin.address">
           </div>
-          <button type="submit" class="btn btn-success">Add</button>
+          <button ng-click="addMagazin(magazin)" type="submit" class="btn btn-success">Add</button>
         </form>
       </div>
     </div>
@@ -221,7 +135,7 @@
   <hr/>
 
   <!-- /resources2-->
-  <div class="container">
+  <div class="container" ng-controller="HomeController">
     <h1 class="resource-title">Persoana</h1>
  
     <table class="table table-bordered table-hover">
@@ -242,12 +156,13 @@
 	 
 	  
 	  </td>
-      <tr>
-        <td>1</td>
-        <td>Dobrescu Elena</td>
-		<td> Bucuresti </td>
-		<td> Fraului</td>
-		<td> Nr 18 </td>
+     
+    <tr ng-repeat="item in persoane.data" data-id="{{ item.id }}">
+        <td>{{item.id}}</td>
+        <td> {{item.name}}</td>
+		<td> {{item.address.oras}}</td>
+		<td> {{item.address.strada}} </td>
+		<td> {{item.address.numar}}</td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -262,94 +177,15 @@
             </span>
           </a>
           <a href="">
-            <span class="label label-danger">
+           <button ng-click="deletePersoana(item.id)" class="btn btn-danger btn-xs">
               Remove
               <span class="glyphicon glyphicon-remove"></span>
-            </span>
+            </button>
           </a>
         </td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Udrea Marius</td>
-		<td> Bucuresti</td>
-		<td> Pacii </td>
-		<td> Nr 15 </td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Bolboaca Valeria</td>
-		<td> Ploiesti </td>
-		<td> Brazi </td>
-		<td> Nr 23 </td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Simion Andrada</td>
-		<td> Bucuresti</td>
-		<td> Soseaua Fundeni </td>
-		<td> Nr 19</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
+   
+
     </table>
 
     <div class="row">
@@ -442,7 +278,7 @@
 
   <hr/>
   <!-- resursa 3 !-->
-    <div class="container">
+    <div class="container" ng-controller="HomeController">
     <h1 class="resource-title">Produs</h1>
 
     <table class="table table-bordered table-hover">
@@ -453,11 +289,11 @@
    
         <th style="width:210px;">Options</th>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Laptop</td>
-      
-       
+	  
+	      <tr ng-repeat="item in produse.data" data-id="{{ item.id }}">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+		
         <td>
           <a href="">
             <span class="label label-success">
@@ -465,98 +301,21 @@
               <span class="glyphicon glyphicon-folder-open"></span>
             </span>
           </a>
-          <a href="">
-            <span class="label label-primary">
+          <button ng-click="setUpdatePerson(item)" class="btn btn-info btn-xs">
               Edit
               <span class="glyphicon glyphicon-edit"></span>
-            </span>
           </a>
-          <a href="">
-            <span class="label label-danger">
+          <button ng-click="deleteP(item.id)" class="btn btn-danger btn-xs">
               Remove
               <span class="glyphicon glyphicon-remove"></span>
-            </span>
+            </button>
           </a>
         </td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Frigider</td>
-       
     
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Televizor</td>
-      
-       
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Cuptor cu microunde</td>
-       
-   
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
+    
+
+
     </table>
 
     <div class="row">

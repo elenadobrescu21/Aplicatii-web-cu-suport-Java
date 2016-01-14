@@ -2,6 +2,7 @@ package hello;
 
 import java.util.List;
 import java.util.ArrayList;
+import hello.Adresa;
 
 public class Persoana {
   private String name;
