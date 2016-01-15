@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class MagazinController {
   }
 
   @RequestMapping(value="/magazin/{id}", method = RequestMethod.DELETE)
-  public void remove(@PathVariable("id") int id) {
+  public @ResponseBody void remove(@PathVariable("id") int id) {
     for(Magazin m : this.magazine) {
       if(m.getId() == id) {
         this.magazine.remove(m);
@@ -64,8 +65,11 @@ public class MagazinController {
 	return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }  
   
-  @RequestMapping(value="/magazin/{id}", method = RequestMethod.PUT)
-  public ResponseEntity update(@PathVariable("id") int id , @RequestParam(value="name", defaultValue="Updated Name") String newName, @RequestParam(value="address", defaultValue="adresa") String address) {
+  @RequestMapping(value="/magazin", method = RequestMethod.PUT)
+  public ResponseEntity update(@RequestBody Magazin mag) {
+	int id = mag.getId();
+    String newName = mag.getName();
+	String address = mag.getAddress();
     for(Magazin m : this.magazine) {
       if(m.getId() == id) {
         m.setName(newName);

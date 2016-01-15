@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -64,7 +66,7 @@ public class ProdusController {
 	return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }  
   
-  @RequestMapping(value="/produs/{id}", method = RequestMethod.PUT)
+  /*@RequestMapping(value="/produs/{id}", method = RequestMethod.PUT)
   public ResponseEntity update(@PathVariable("id") int id , @RequestParam(value="name", defaultValue="Updated Name") String newName) {
     for(Produs p : this.produse) {
       if(p.getId() == id) {
@@ -73,5 +75,21 @@ public class ProdusController {
       }
     }
     return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
+  } */
+  
+   
+  @RequestMapping(value="/produs", method = RequestMethod.PUT)
+  public ResponseEntity update(@RequestBody Produs pr) {
+	 int id = pr.getId();
+	 String newName = pr.getName();
+    for(Produs p : this.produse) {
+      if(p.getId() == id) {
+        p.setName(newName);
+		return new ResponseEntity<Produs>(p, new HttpHeaders(), HttpStatus.OK);
+      }
+    }
+    return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   } 
+  
+  
 }

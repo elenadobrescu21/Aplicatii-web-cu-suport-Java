@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class PersoanaController {
     Adresa a2 = new Adresa("Brasov", "Fantanica", 32);
     Adresa a3 = new Adresa ("Bucuresti", "Mihai Bravu", 38);
     Persoana p1 = new Persoana(1, "John", a1);
-    Persoana p2 = new Persoana(2, "Paul", a2);
+    Persoana p2 = new Persoana(2, "Mihai", a2);
     Persoana p3 = new Persoana(3, "Paul", a3);
 
     persoane.add(p1);
@@ -84,12 +85,12 @@ public class PersoanaController {
 	return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);	
 }  
  
-  @RequestMapping(value="/persoana/{id}", method = RequestMethod.PUT)
-  public ResponseEntity update(@PathVariable("id") int id , @RequestParam(value="name", defaultValue="Updated Name") String newName,
-		 	       @RequestParam(value="oras", defaultValue="Oras") String oras,
-			       @RequestParam(value="stada", defaultValue="Strada") String strada,
-			       @RequestParam(value="numar", defaultValue="0") int numar) {
-  Adresa adr = new Adresa(String.format(oras), String.format(strada), numar);
+  @RequestMapping(value="/persoana", method = RequestMethod.PUT)
+  public ResponseEntity update(@RequestBody Persoana pers) {
+  //Adresa adr = new Adresa(String.format(oras), String.format(strada), numar);
+  int id = pers.getId();
+  String newName = pers.getName();
+  Adresa adr = pers.getAddress();
   for(Persoana p : this.persoane) {
       if(p.getId() == id) {
         p.setName(newName);
