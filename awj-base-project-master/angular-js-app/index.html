@@ -22,9 +22,9 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#">Magazin</a></li>
-            <li><a href="#">Persoana</a></li>
-			<li><a href="#">Produs </a> </li>
+            <li><a href="#magazin">Magazin</a></li>
+            <li><a href="#persoana">Persoana</a></li>
+			<li><a href="#produs">Produs </a> </li>
           </ul>
         </div>
       </div>
@@ -43,7 +43,7 @@
   <hr/>
 
   <!-- /resources1 -->
-  <div class="container" ng-controller="HomeController">
+  <div class="container" ng-controller="HomeController" id="magazin">
     <h1 class="resource-title">Magazin</h1>
 
     <table class="table table-bordered table-hover">
@@ -60,12 +60,14 @@
 		<td> {{item.address}} </td>
         <td>
           <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
+		  <button ng-click="showMagazin(item)" class="btn btn-success btn-xs">
+            <span class="label label-success">		
+              Open  
+            <span class="glyphicon glyphicon-folder-open"></span>
             </span>
+			</button>
           </a>
-          <button ng-click="setUpdatePerson(item)" class="btn btn-info btn-xs">
+          <button ng-click="setUpdateMagazin(item)" class="btn btn-info btn-xs">
               Edit
               <span class="glyphicon glyphicon-edit"></span>
           </a>
@@ -84,17 +86,21 @@
       <div class="col-md-3">
         <h2>Edit magazin</h2>
         <form action="" method="">
+		<div class="form-group">
+            <label for="attribute2">ID</label>
+            <input type="text" class="form-control" id="Id_magazin" placeholder="ID" ng-model="editMagazin.id" >
+          </div>
           
           <div class="form-group">
             <label for="attribute2">Nume</label>
-            <input type="text" class="form-control" id="nume_magazin" placeholder="Nume">
+            <input type="text" class="form-control" id="nume_magazin" placeholder="Nume" ng-model="editMagazin.name">
           </div>
           <div class="form-group">
             <label for="attribute3">Adresa</label>
-            <input type="text" class="form-control" id="adresa_magazin" placeholder="Adresa">
+            <input type="text" class="form-control" id="adresa_magazin" placeholder="Adresa" ng-model="editMagazin.address">
           </div>
         
-          <button type="submit" class="btn btn-info">Save</button>
+          <button type="submit" class="btn btn-info" ng-click="updateMagazin()">Save</button>
         </form>
       </div>
 
@@ -116,7 +122,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-show="isOpen">
       <div class="col-md-12">
         <h2>Show magazin</h2>
       </div>
@@ -124,9 +130,9 @@
         <img src="http://lorempixel.com/200/200/technics/?id=1" class="img-thumbnail"/>
       </div>
       <div class="col-md-10">
-        <h3>ID:</h3>
-		<h3>Nume:</h3>
-		<h3>Adresa: </h3>
+        <h3>ID: {{magazinShow.id}}</h3>
+		<h3>Nume: {{magazinShow.name}}</h3>
+		<h3>Adresa: {{magazinShow.address}} </h3>
         
       </div>
     </div>
@@ -135,7 +141,7 @@
   <hr/>
 
   <!-- /resources2-->
-  <div class="container" ng-controller="HomeController">
+  <div class="container" ng-controller="HomeController" id="persoana">
     <h1 class="resource-title">Persoana</h1>
  
     <table class="table table-bordered table-hover">
@@ -164,24 +170,24 @@
 		<td> {{item.address.strada}} </td>
 		<td> {{item.address.numar}}</td>
         <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
+           <a href="">
+		  <button ng-click="showPersoana(item)" class="btn btn-success btn-xs">
+            <span class="label label-success">		
+              Open  
+            <span class="glyphicon glyphicon-folder-open"></span>
             </span>
+			</button>
           </a>
-          <a href="">
-            <span class="label label-primary">
+          <button ng-click="setUpdatePersoana(item)" class="btn btn-info btn-xs">
               Edit
               <span class="glyphicon glyphicon-edit"></span>
-            </span>
           </a>
-          <a href="">
-           <button ng-click="deletePersoana(item.id)" class="btn btn-danger btn-xs">
+          <button ng-click="deletePersoana(item.id)" class="btn btn-danger btn-xs">
               Remove
               <span class="glyphicon glyphicon-remove"></span>
             </button>
           </a>
+        
         </td>
       </tr>
    
@@ -192,25 +198,26 @@
       <div class="col-md-3">
         <h2>Edit persoana </h2>
         <form action="" method="">
-          <div class="form-group">
-            <label for="attribute1">Id</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Id">
+		   <div class="form-group">
+            <label for="attribute2">ID</label>
+            <input type="text" class="form-control"  placeholder="ID" ng-model="editPerson.id">
           </div>
+
           <div class="form-group">
             <label for="attribute2">Nume</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Nume">
+            <input type="text" class="form-control"  placeholder="Nume" ng-model="editPerson.name">
           </div>
 		    <div class="form-group">
             <label for="attribute2">Oras</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Oras">
+            <input type="text" class="form-control" placeholder="Oras" ng-model="editPerson.address.oras">
           </div>
 		    <div class="form-group">
             <label for="attribute2">Strada</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Strada">
+            <input type="text" class="form-control"  placeholder="Strada" ng-model="editPerson.address.strada">
           </div>
 		    <div class="form-group">
             <label for="attribute2">Numar</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Numar">
+            <input type="text" class="form-control"  placeholder="Numar" ng-model="editPerson.address.numar">
           </div>
           <button type="submit" class="btn btn-info">Save</button>
         </form>
@@ -219,32 +226,30 @@
 
       <div class="col-md-3 col-md-offset-6">
         <h2>Add persoana</h2>
-       <div class="form-group">
-            <label for="attribute1">Id</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Id">
-          </div>
+		
+    
           <div class="form-group">
             <label for="attribute2">Nume</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Nume">
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume" ng-model="persoana.name">
           </div>
 		    <div class="form-group">
             <label for="attribute2">Oras</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Oras">
+            <input type="text" class="form-control" id="attribute2" placeholder="Oras" ng-model="persoana.address.oras">
           </div>
 		    <div class="form-group">
             <label for="attribute2">Strada</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Strada">
+            <input type="text" class="form-control" id="attribute2" placeholder="Strada" ng-model="persoana.address.strada">
           </div>
 		    <div class="form-group">
             <label for="attribute2">Numar</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Numar">
+            <input type="text" class="form-control" id="attribute2" placeholder="Numar" ng-model="persoana.address.numar">
           </div>
-          <button type="submit" class="btn btn-success">Add</button>
+        <button ng-click="addPersoana(persoana)" type="submit" class="btn btn-success">Add</button>
         </form>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-show="isOpen">
       <div class="col-md-12">
         <h2>Show persoana</h2>
       </div>
@@ -252,8 +257,8 @@
         <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
       </div>
       <div class="col-md-10">
-        <h3>Id</h3>
-       <h3> Nume <h3>
+        <h3>Id: {{persoanaShow.id}}</h3>
+       <h3> Nume: {{persoanaShow.name}} <h3>
         <h3>Adresa</h3>
         <table class="table table-bordered table-striped table-hover">
           <tr>
@@ -262,15 +267,11 @@
             <th>Numar</th>
           </tr>
           <tr>
-            <td>Lorem ipsum</td>
-			<td>lorem </td>
-            <td>Lorem</td>
+            <td>{{persoanaShow.address.oras}}</td>
+			<td> {{persoanaShow.address.strada}}</td>
+            <td> {{persoanaShow.address.numar}}</td>
           </tr>
-          <tr>
-            <td>Lorem ipsum dolor</td>
-			<td> lorem </td>
-            <td>Sir</td>
-          </tr>
+         
         </table>
       </div>
     </div>
@@ -278,7 +279,7 @@
 
   <hr/>
   <!-- resursa 3 !-->
-    <div class="container" ng-controller="HomeController">
+    <div class="container" ng-controller="HomeController" id="produs">
     <h1 class="resource-title">Produs</h1>
 
     <table class="table table-bordered table-hover">
@@ -295,17 +296,19 @@
         <td>{{ item.name }}</td>
 		
         <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
+           <a href="">
+		  <button ng-click="showProdus(item)" class="btn btn-success btn-xs">
+            <span class="label label-success">		
+              Open  
+            <span class="glyphicon glyphicon-folder-open"></span>
             </span>
+			</button>
           </a>
-          <button ng-click="setUpdatePerson(item)" class="btn btn-info btn-xs">
+          <button ng-click="setUpdateProdus(item)" class="btn btn-info btn-xs">
               Edit
               <span class="glyphicon glyphicon-edit"></span>
           </a>
-          <button ng-click="deleteP(item.id)" class="btn btn-danger btn-xs">
+          <button ng-click="deleteProdus(item.id)" class="btn btn-danger btn-xs">
               Remove
               <span class="glyphicon glyphicon-remove"></span>
             </button>
@@ -321,40 +324,39 @@
     <div class="row">
       <div class="col-md-3">
         <h2>Edit produs</h2>
-        <form action="" method="">
-          <div class="form-group">
+        <form action="" method="" > 
+		 <div class="form-group">
             <label for="attribute1">Id</label>
-            <input type="text" class="form-control" id="id_magazin" placeholder="Id">
+            <input type="text" class="form-control" id="id_magazin" placeholder="Id" ng-model="editProdus.id">
           </div>
+        
           <div class="form-group">
             <label for="attribute2">Nume</label>
-            <input type="text" class="form-control" id="nume_magazin" placeholder="Nume">
+            <input type="text" class="form-control" id="nume_magazin" placeholder="Nume" ng-model="editProdus.name">
           </div>
         
-        
-          <button type="submit" class="btn btn-info">Save</button>
+        <button class="btn btn-info" ng-click="updateProdus()">Save</button>
+          
         </form>
+		
       </div>
 
 
       <div class="col-md-3 col-md-offset-6">
         <h2>Add produs</h2>
-        <form action="" method="">
-          <div class="form-group">
-            <label for="attribute1">Id</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Id">
-          </div>
+        <form action="" method="POST">
+        
           <div class="form-group">
             <label for="attribute2">Nume</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Nume">
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume" ng-model="produs.name">
           </div>
         
-          <button type="submit" class="btn btn-success">Add</button>
+           <button ng-click="addProdus(produs)" type="submit" class="btn btn-success">Add</button>
         </form>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-show="isOpen">
       <div class="col-md-12">
         <h2>Show produs</h2>
       </div>
@@ -362,8 +364,8 @@
         <img src="http://lorempixel.com/200/200/technics/?id=1" class="img-thumbnail"/>
       </div>
       <div class="col-md-10">
-        <h3>ID:</h3>
-		<h3>Nume:</h3>
+        <h3>ID: {{ produsShow.id }}</h3>
+		<h3>Nume: {{produsShow.name}}</h3> 
         
       </div>
     </div>
